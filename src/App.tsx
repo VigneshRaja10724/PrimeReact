@@ -1,15 +1,13 @@
-import { useEffect, useState } from 'react';
 import './App.css';
+import { useEffect, useState } from 'react';
 import { DashBoard } from './Components/DashBoard';
-// import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
-
+import { ConfirmDialog } from 'primereact/confirmdialog';
 import { BlockUI } from 'primereact/blockui';
 import { Toast } from 'primereact/toast';
 import { useSelector } from 'react-redux';
-// import { toastRef } from './Store/Reducers/Toast';
 import { RootState } from './Store/store';
 import { toastRef } from './Service/ToastService';
-  
+
 
 function App() {
 
@@ -18,35 +16,36 @@ function App() {
   const blockUI = useSelector((state: RootState) => state.UIBlock.totalBlockUI);
 
   useEffect(() => {
-    if(block){
-    const timeoutId = setTimeout(() => {
-      setBlock(false)
-      console.log('Delayed function executed after 2  000ms');
-    }, 2000);   
-    // Clean up the timeout when the component unmounts
-    return () => clearTimeout(timeoutId);
-  }
+    if (block) {
+      const timeoutId = setTimeout(() => {
+        setBlock(false)
+        console.log('Delayed function executed after 2  000ms');
+      }, 2000);
+      // Clean up the timeout when the component unmounts
+      return () => clearTimeout(timeoutId);
+    }
 
   }, [block]);
 
   useEffect(() => {
-    if(blockUI > 0){
+    if (blockUI > 0) {
       setBlock(true)
-    }else{
+    } else {
       setBlock(false)
     }
-  },[blockUI])
-  
+  }, [blockUI])
+
   return (
     <div className="App">
       {/* <PrimeReactProvider> */}
       <Toast ref={toastRef} position="top-center" />
+      <ConfirmDialog />
       <BlockUI blocked={block} fullScreen>
-      <DashBoard />
+        <DashBoard />
       </BlockUI>
       {/* </PrimeReactProvider> */}
-      </div>
+    </div>
   );
 }
 
-export default App ;
+export default App;

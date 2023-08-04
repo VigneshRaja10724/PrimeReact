@@ -5,6 +5,8 @@ import { start, stop } from '../Store/Reducers/BlockUI';
 import { RootState } from '../Store/store';
 import { ComponentOneChild } from "./ComponentOneChild";
 import { ToastService } from '../Service/ToastService';
+import { confirmDialog } from 'primereact/confirmdialog';
+import { ConfirmService } from '../Service/ConfirmDialogService';
 
 export const ComponentTwo = () => {
 
@@ -18,8 +20,14 @@ export const ComponentTwo = () => {
         dispatch(stop(blockUI))
     }
 
+    const onSucess = () =>{
+        ToastService.showSuccessMessage("Sucess message from component 2")
+    }
+    const onCancle = () => {
+        ToastService.showWarningMessage("Warning message from component 2")
+    }
     const showWarning = () => {
-        ToastService.showWarningMessage("Warning")
+        ConfirmService(onSucess, onCancle);
     }
 
     return (

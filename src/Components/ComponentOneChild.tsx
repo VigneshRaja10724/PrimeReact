@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../Store/store";
 import { start, stop } from "../Store/Reducers/BlockUI";
 import { ToastService } from '../Service/ToastService';
+import { ConfirmService } from '../Service/ConfirmDialogService';
 
 export const ComponentOneChild = () => {
     const dispatch = useDispatch();
@@ -17,8 +18,14 @@ export const ComponentOneChild = () => {
         dispatch(stop(blockUI))
     }
 
+    const onSucess = () =>{
+        ToastService.showSuccessMessage("Sucess message from child component ")
+    }
+    const onCancle = () => {
+        ToastService.showWarningMessage("Warning message from child component ")
+    }
     const showErrorMessage = () => {
-        ToastService.showErrorMessage("Error")
+        ConfirmService(onSucess, onCancle);
     }
     return (
         <>
