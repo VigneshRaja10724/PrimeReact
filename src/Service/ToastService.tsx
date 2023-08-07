@@ -1,5 +1,4 @@
 import { createRef } from "react";
-import { confirmDialog } from 'primereact/confirmdialog';
 
 export const toastRef : any = createRef();
 
@@ -25,21 +24,3 @@ export const ToastService = {
         }
     }
 }
-
-// export const ConfirmDialog = {
-//     confirmDialog({
-//         message: 'Are you sure you want to proceed?',
-//         header: 'Confirmation',
-//         icon: 'pi pi-exclamation-triangle',
-//         accept : ToastService.showSuccessMessage,
-//         reject : ToastService.showWarningMessage,
-//       });,
-//       confirmDialog({
-//         message: 'Do you want to delete this record?',
-//         header: 'Delete Confirmation',
-//         icon: 'pi pi-info-circle',
-//         acceptClassName: 'p-button-danger',
-//         // accept,
-//         // reject,
-//       });
-// }

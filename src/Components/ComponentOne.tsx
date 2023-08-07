@@ -16,12 +16,7 @@ export const ComponentOne = () => {
     const blockUI = useSelector((state: RootState) => state.UIBlock.totalBlockUI);
     const [value, setValue] = useState<any>("");
   
-    useEffect(() => {
-        console.log(blockUI)
-    },[blockUI]);
-
-
-    const hide = () => {
+const hide = () => {
         dispatch(start(blockUI))
     }
     const show = () => {

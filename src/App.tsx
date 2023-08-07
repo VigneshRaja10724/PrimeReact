@@ -37,13 +37,11 @@ function App() {
 
   return (
     <div className="App">
-      {/* <PrimeReactProvider> */}
       <Toast ref={toastRef} position="top-center" />
       <ConfirmDialog />
       <BlockUI blocked={block} fullScreen>
         <DashBoard />
       </BlockUI>
-      {/* </PrimeReactProvider> */}
     </div>
   );
 }
