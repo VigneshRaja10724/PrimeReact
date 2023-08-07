@@ -3,16 +3,18 @@ import { confirmDialog } from 'primereact/confirmdialog';
 import { ComponentOneChild } from "./ComponentOneChild"
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../Store/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { start, stop } from "../Store/Reducers/BlockUI";
 import { ToastService } from '../Service/ToastService';
 import { ConfirmService } from '../Service/ConfirmDialogService';
+import { Search } from './Search';
+import { InputText } from 'primereact/inputtext';
 
 export const ComponentOne = () => {
 
     const dispatch = useDispatch();
     const blockUI = useSelector((state: RootState) => state.UIBlock.totalBlockUI);
-
+    const [value, setValue] = useState<any>("");
   
     useEffect(() => {
         console.log(blockUI)
@@ -36,12 +38,13 @@ export const ComponentOne = () => {
     }
     return (
         <>
-        
             <p>Compoennt One</p>
             <ComponentOneChild />{" "}
+            <InputText value={value} />
             <Button onClick={showSuccess}  icon="pi pi-check" className="p-button-success" label="Sucess" />{" "}
             <Button onClick={hide} label="start" />{" "}
             <Button onClick={show} label="stop" />
+            <Search setValue ={setValue}/>
         </>
     )
 }

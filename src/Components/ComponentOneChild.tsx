@@ -6,10 +6,14 @@ import { RootState } from "../Store/store";
 import { start, stop } from "../Store/Reducers/BlockUI";
 import { ToastService } from '../Service/ToastService';
 import { ConfirmService } from '../Service/ConfirmDialogService';
+import { useState } from 'react';
+import { InputText } from 'primereact/inputtext';
+import { Search } from './Search';
 
 export const ComponentOneChild = () => {
     const dispatch = useDispatch();
     const blockUI = useSelector((state: RootState) => state.UIBlock.totalBlockUI);
+    const [value, setValue] = useState<any>("");
 
     const hide = () => {
         dispatch(start(blockUI))
@@ -18,7 +22,7 @@ export const ComponentOneChild = () => {
         dispatch(stop(blockUI))
     }
 
-    const onSucess = () =>{
+    const onSucess = () => {
         ToastService.showSuccessMessage("Sucess message from child component ")
     }
     const onCancle = () => {
@@ -29,9 +33,11 @@ export const ComponentOneChild = () => {
     }
     return (
         <>
+            <InputText value={value} />
             <Button onClick={showErrorMessage} className="p-button-danger" label="Error" />{" "}
             <Button onClick={hide} label="Hide" />{" "}
             <Button onClick={show} label="Show" />
+            <Search setValue ={setValue}/>
         </>
     )
 }
