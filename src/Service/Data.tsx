@@ -10,7 +10,7 @@ interface Person {
     const positions = ["Tester", "Developer", "Manager", "Designer"];
     const data: Person[] = [];
   
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 1000; i++) {
       const randomName = names[Math.floor(Math.random() * names.length)];
       const randomAge = (Math.floor(Math.random() * 30) + 20).toString();
       const randomPosition = positions[Math.floor(Math.random() * positions.length)];

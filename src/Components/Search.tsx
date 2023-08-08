@@ -26,7 +26,7 @@ export const Search = ({ setValue }: any) => {
 
     let loadLazyTimeout: any = null;
 
-    const loadCarsLazy = (event: any) => {
+    const loadPersonsLazy = (event: any) => {
         !lazyLoading && setLazyLoading(true);
 
         if (loadLazyTimeout) {
@@ -35,9 +35,13 @@ export const Search = ({ setValue }: any) => {
 
         loadLazyTimeout = setTimeout(() => {
             let _persons = [...persons];
+            let { first, last } = event;
+            const loadedPersons = persons.slice(first, last);
+            const numElementsToRemove = last - first;
+            _persons.splice(first, numElementsToRemove, ...loadedPersons);
             setPersons(_persons);
             setLazyLoading(false);
-        }, Math.random() * 100 + 250);
+        }, Math.random() * 1000 + 250);
     };
 
     const loadingTemplate = (options: any) => {
@@ -75,10 +79,11 @@ export const Search = ({ setValue }: any) => {
                     onRowSelect={onRowSelect}
                     metaKeySelection={false}
                     virtualScrollerOptions={{
-                        lazy: true, onLazyLoad: loadCarsLazy, itemSize: 46,
-                        delay: 20, showLoader: true, loading: lazyLoading, loadingTemplate
+                        lazy: true, onLazyLoad: loadPersonsLazy, itemSize: 46,
+                        delay: 200, showLoader: true, loading: lazyLoading, loadingTemplate
                     }}
-                    scrollable scrollHeight="flex" tableStyle={{ minWidth: '50rem' }}
+                    scrollable scrollHeight="400px"
+                    tableStyle={{ minWidth: '50rem' }}
 
                 >
                     <Column filter field="id" header="ID"></Column>
