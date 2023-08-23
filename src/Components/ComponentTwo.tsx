@@ -10,6 +10,7 @@ import { ConfirmService } from '../Service/ConfirmDialogService';
 import { Search } from './Search';
 import { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
+import { Link } from 'react-router-dom';
 
 export const ComponentTwo = () => {
 
@@ -37,12 +38,13 @@ export const ComponentTwo = () => {
     return (
         <>
             <p>Compoennt Two</p>
-            <ComponentOneChild />{" "}
+            {/* <ComponentOneChild />{" "} */}
             <InputText value={value} />
             <Button onClick={showWarning} className="p-button-warning" label="warning" />{" "}
             <Button onClick={hide} label="start" />{" "}
             <Button onClick={show} label="stop" />
             <Search setValue ={setValue}/>
+            <Link to="/child" >Child</Link>
         </>
     )
 }

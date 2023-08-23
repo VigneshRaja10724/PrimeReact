@@ -9,6 +9,7 @@ import { ConfirmService } from '../Service/ConfirmDialogService';
 import { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Search } from './Search';
+import { Link } from 'react-router-dom';
 
 export const ComponentOneChild = () => {
     const dispatch = useDispatch();
@@ -38,6 +39,7 @@ export const ComponentOneChild = () => {
             <Button onClick={hide} label="Hide" />{" "}
             <Button onClick={show} label="Show" />
             <Search setValue ={setValue}/>
+            <Link to= "/" >Back </Link>
         </>
     )
 }

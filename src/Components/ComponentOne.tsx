@@ -9,6 +9,7 @@ import { ToastService } from '../Service/ToastService';
 import { ConfirmService } from '../Service/ConfirmDialogService';
 import { Search } from './Search';
 import { InputText } from 'primereact/inputtext';
+import { Link } from 'react-router-dom';
 
 export const ComponentOne = () => {
 
@@ -34,12 +35,13 @@ const hide = () => {
     return (
         <>
             <p>Compoennt One</p>
-            <ComponentOneChild />{" "}
+            {/* <ComponentOneChild />{" "} */}
             <InputText value={value} />
             <Button onClick={showSuccess}  icon="pi pi-check" className="p-button-success" label="Sucess" />{" "}
             <Button onClick={hide} label="start" />{" "}
             <Button onClick={show} label="stop" />
             <Search setValue ={setValue}/>
+            <Link to="/child" >Child</Link>
         </>
     )
 }
