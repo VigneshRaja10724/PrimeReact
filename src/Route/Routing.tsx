@@ -1,23 +1,37 @@
+import { createBrowserRouter } from "react-router-dom"
+import { ComponentGrandChild } from "../Components/ComponentGrandChid"
 import { ComponentOne } from "../Components/ComponentOne"
 import { ComponentOneChild } from "../Components/ComponentOneChild"
 import { ComponentTwo } from "../Components/ComponentTwo"
 import { DashBoard } from "../Components/DashBoard"
 
-export const routes = [
-    {
-        path: "/1",
-        component: ComponentOne
-    },
-    {
-        path: "/2",
-        component: ComponentTwo
-    },
-    {
-        path: "/child",
-        component: ComponentOneChild
-    },
+const routes = [
     {
         path: "/",
-        component: DashBoard
-    }
-]
+        element: <DashBoard />,
+        children: [
+            {
+                path: ":id",
+                element: <ComponentOne />,
+                children: [
+                    {
+                        path: "child",
+                        element: <ComponentOneChild />,
+                        children: [
+                            {
+                                path: "GrandChild",
+                                element: <ComponentGrandChild />
+                            },
+                        ]
+                    },
+                ]
+            },
+            {
+                path: "2",
+                element: <ComponentTwo />
+            },
+        ]
+    },
+];
+
+export const router = createBrowserRouter(routes)

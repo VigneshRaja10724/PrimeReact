@@ -1,15 +1,13 @@
-import './App.css';
-import { Fragment, Suspense, useEffect, useState } from 'react';
-import { DashBoard } from './Components/DashBoard';
-import { ConfirmDialog } from 'primereact/confirmdialog';
 import { BlockUI } from 'primereact/blockui';
+import { ConfirmDialog } from 'primereact/confirmdialog';
 import { Toast } from 'primereact/toast';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from './Store/store';
+import { Outlet, RouterProvider } from 'react-router-dom';
+import './App.css';
+import { router } from './Route/Routing';
 import { toastRef } from './Service/ToastService';
-import { Route, Routes } from 'react-router-dom';
-import { routes } from './Route/Routing';
-import { Router } from './Types/Types';
+import { RootState } from './Store/store';
 
 
 function App() {
@@ -43,19 +41,7 @@ function App() {
       <Toast ref={toastRef} position="top-center" />
       <ConfirmDialog />
       <BlockUI blocked={block} fullScreen>
-        <Routes >
-          {routes.map((route: Router, index: number) => (
-            <Route
-              path={route.path}
-              element={
-                <>
-                <Suspense fallback={<p>Loading...</p>} />
-                <route.component />
-                </>
-              }
-            />
-          ))}
-        </Routes>
+       <RouterProvider router={router} />
       </BlockUI>
     </div>
   );

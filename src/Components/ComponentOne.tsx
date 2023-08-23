@@ -9,7 +9,7 @@ import { ToastService } from '../Service/ToastService';
 import { ConfirmService } from '../Service/ConfirmDialogService';
 import { Search } from './Search';
 import { InputText } from 'primereact/inputtext';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 export const ComponentOne = () => {
 
@@ -41,7 +41,8 @@ const hide = () => {
             <Button onClick={hide} label="start" />{" "}
             <Button onClick={show} label="stop" />
             <Search setValue ={setValue}/>
-            <Link to="/child" >Child</Link>
+            <Link to="/1/child" >Child</Link>
+            <Outlet />
         </>
     )
 }

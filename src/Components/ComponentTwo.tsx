@@ -44,7 +44,6 @@ export const ComponentTwo = () => {
             <Button onClick={hide} label="start" />{" "}
             <Button onClick={show} label="stop" />
             <Search setValue ={setValue}/>
-            <Link to="/child" >Child</Link>
         </>
     )
 }

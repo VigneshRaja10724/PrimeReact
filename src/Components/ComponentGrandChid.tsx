@@ -9,9 +9,9 @@ import { ConfirmService } from '../Service/ConfirmDialogService';
 import { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Search } from './Search';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export const ComponentOneChild = () => {
+export const ComponentGrandChild = () => {
     const dispatch = useDispatch();
     const blockUI = useSelector((state: RootState) => state.UIBlock.totalBlockUI);
     const [value, setValue] = useState<any>("");
@@ -34,13 +34,13 @@ export const ComponentOneChild = () => {
     }
     return (
         <>
-            <InputText value={value} />
+            {/* <InputText value={value} />
             <Button onClick={showErrorMessage} className="p-button-danger" label="Error" />{" "}
             <Button onClick={hide} label="Hide" />{" "}
             <Button onClick={show} label="Show" />
-            <Search setValue ={setValue}/>
-            <Link to= "/1/child/GrandChild" >GrandChild </Link>
-            <Outlet />
+            <Search setValue ={setValue}/> */}
+            <p>GrnadChild</p>
+            <Link to= ".." relative='path' >Back </Link>
         </>
     )
 }
