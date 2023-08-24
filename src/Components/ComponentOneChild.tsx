@@ -6,10 +6,10 @@ import { RootState } from "../Store/store";
 import { start, stop } from "../Store/Reducers/BlockUI";
 import { ToastService } from '../Service/ToastService';
 import { ConfirmService } from '../Service/ConfirmDialogService';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Search } from './Search';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 export const ComponentOneChild = () => {
     const dispatch = useDispatch();
@@ -32,6 +32,11 @@ export const ComponentOneChild = () => {
     const showErrorMessage = () => {
         ConfirmService(onSucess, onCancle);
     }
+    let {id} = useParams();
+    const person = useLocation();
+    useEffect(() =>{
+        console.log(person.state)
+    },[person])
     return (
         <>
             <InputText value={value} />

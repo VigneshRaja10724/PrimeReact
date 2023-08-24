@@ -9,7 +9,7 @@ import { ToastService } from '../Service/ToastService';
 import { ConfirmService } from '../Service/ConfirmDialogService';
 import { Search } from './Search';
 import { InputText } from 'primereact/inputtext';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 
 export const ComponentOne = () => {
 
@@ -32,6 +32,15 @@ const hide = () => {
     const showSuccess = () => {
         ConfirmService(onSucess, onCancle);
     }
+
+    let {id} = useParams();
+    useEffect(() =>{
+        console.log(id)
+    },[id])
+    const person ={
+        name: "vijay",
+        age: "10"
+    }
     return (
         <>
             <p>Compoennt One</p>
@@ -41,7 +50,7 @@ const hide = () => {
             <Button onClick={hide} label="start" />{" "}
             <Button onClick={show} label="stop" />
             <Search setValue ={setValue}/>
-            <Link to="/1/child" >Child</Link>
+            <Link to="/1/child" state={person}>Child</Link>
             <Outlet />
         </>
     )

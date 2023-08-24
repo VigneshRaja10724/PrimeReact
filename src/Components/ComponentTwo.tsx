@@ -8,9 +8,9 @@ import { ToastService } from '../Service/ToastService';
 import { confirmDialog } from 'primereact/confirmdialog';
 import { ConfirmService } from '../Service/ConfirmDialogService';
 import { Search } from './Search';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export const ComponentTwo = () => {
 
@@ -25,7 +25,7 @@ export const ComponentTwo = () => {
         dispatch(stop(blockUI))
     }
 
-    const onSucess = () =>{
+    const onSucess = () => {
         ToastService.showSuccessMessage("Sucess message from component 2")
     }
     const onCancle = () => {
@@ -34,7 +34,6 @@ export const ComponentTwo = () => {
     const showWarning = () => {
         ConfirmService(onSucess, onCancle);
     }
-
     return (
         <>
             <p>Compoennt Two</p>
@@ -43,7 +42,7 @@ export const ComponentTwo = () => {
             <Button onClick={showWarning} className="p-button-warning" label="warning" />{" "}
             <Button onClick={hide} label="start" />{" "}
             <Button onClick={show} label="stop" />
-            <Search setValue ={setValue}/>
+            <Search setValue={setValue} />
         </>
     )
 }

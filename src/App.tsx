@@ -3,7 +3,7 @@ import { ConfirmDialog } from 'primereact/confirmdialog';
 import { Toast } from 'primereact/toast';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Outlet, RouterProvider } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
 import { router } from './Route/Routing';
 import { toastRef } from './Service/ToastService';
