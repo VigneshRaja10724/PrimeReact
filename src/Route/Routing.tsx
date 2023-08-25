@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom"
 import { ComponentGrandChild } from "../Components/ComponentGrandChid"
-import { ComponentOne } from "../Components/ComponentOne"
+import  ComponentOne  from "../Components/ComponentOne"
 import { ComponentOneChild } from "../Components/ComponentOneChild"
 import { ComponentTwo } from "../Components/ComponentTwo"
 import { DashBoard } from "../Components/DashBoard"

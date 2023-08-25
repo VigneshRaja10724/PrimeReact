@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { BlockUI } from "./Reducers/BlockUI";
+import { reducer as formReducer } from 'redux-form';
+import { TwoWay } from "./Reducers/TwoWayBinding";
 
 export const store = configureStore({
     reducer: {
         UIBlock : BlockUI.reducer,
+        TwoWay : TwoWay.reducer,
+        form: formReducer
     }
 })
 
